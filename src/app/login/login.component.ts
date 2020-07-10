@@ -10,6 +10,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
+  submitted = false;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -45,5 +46,18 @@ export class LoginComponent implements OnInit {
       ]
     })
   }
+
+  onLoginSubmit() {
+    this.submitted = true;
+
+    // stop here if form is invalid
+    if (this.loginForm.invalid) {
+      return;
+    }
+
+  }
+
+  // convenience getter for easy access to form fields
+  get f() { return this.loginForm.controls; }
 
 }
