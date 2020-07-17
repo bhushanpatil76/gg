@@ -30,6 +30,11 @@ import { HttpClientModule } from '@angular/common/http';
 
   ],
   providers: [LoginService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  
+  exports: [
+    FormsModule,
+    ReactiveFormsModule,
+  ]
 })
 export class AppModule { }

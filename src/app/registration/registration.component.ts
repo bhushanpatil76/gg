@@ -17,13 +17,15 @@ export class RegistrationComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private loginService: LoginService,
-  ) {}
+  ) { }
 
   ngOnInit() {
+    this.createRegistrationForm();
   }
 
   createRegistrationForm() {
-    return this.formBuilder.group({
+    this.registrationForm = this.formBuilder.group({
+      // full_name: [{value: '', disabled: true}, Validators.required, Validators.minLength],
       full_name: [
         "",
         [
@@ -154,24 +156,49 @@ export class RegistrationComponent implements OnInit {
       company_address: [
         "",
         [
-         // Validators.required,
+          // Validators.required,
           // Validators.minLength(1),
           // Validators.maxLength(10),
 
         ]
       ],
 
-    })
+    });
+
   }
 
-  onRegistrationSubmit(){
-    let postData: any = {}
-    this.loginService.signupUser(postData).subscribe(result =>{
-      console.log('registration form data here ....',result);
+  onRegistrationSubmit() {
+    console.log("form", this.registrationForm);
+    var formData = this.registrationForm.getRawValue();
+
+    debugger;
+    let postData = {
+      full_name: formData.full_name,
+      phone_number: formData.phone_number,
+      email: formData.email,
+      password: formData.password,
+      dob: formData.dob,
+      gender: formData.gender,
+      fk_country_id: formData.fk_country_id,
+      fk_state_id: formData.fk_state_id,
+      fk_city_id: formData.fk_city_id,
+      skype_id: formData.skype_id,
+      phone_number2: formData.phone_number2,
+      website: formData.website,
+      company_name: formData.company_name,
+      fk_primary_bussiness: formData.fk_primary_bussiness,
+      company_address: formData.company_address
+    }
+
+    console.log("postData ",postData)
+    this.loginService.signupUser(postData).subscribe(result => {
+      console.log('registration form data here ....', result);
     },
-    error =>{
-      console.log('registration form error here ....',error);
-    })
+      error => {
+        console.log('registration form error here ....', error);
+      })
   }
+
+
 
 }
