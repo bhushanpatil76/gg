@@ -3,6 +3,7 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
+  URL:'https://admin.globalgrahak.com/api/auth/',
   production: false
 };
 

@@ -3,7 +3,8 @@
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script> -->
 <!------ Include the above in your HEAD tag ---------->
 
-<form class="form-horizontal">
+<div class="container">
+<form class="form-horizontal" [formGroup]="registrationForm" (ngSubmit)="onRegistrationSubmit()">
     <fieldset>
       <div id="legend">
         <legend class="">Login Information</legend>
@@ -151,8 +152,9 @@
       <div class="control-group">
         <!-- Button -->
         <div class="controls">
-          <button class="btn btn-success">Create Account</button>
+          <button class="btn btn-success" (click)="onRegistrationSubmit()">Create Account</button>
         </div>
       </div>
     </fieldset>
   </form>
+</div>
