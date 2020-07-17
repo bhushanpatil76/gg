@@ -168,6 +168,9 @@ export class RegistrationComponent implements OnInit {
     let postData: any = {}
     this.loginService.signupUser(postData).subscribe(result =>{
       console.log('registration form data here ....',result);
+    },
+    error =>{
+      console.log('registration form error here ....',error);
     })
   }
 
