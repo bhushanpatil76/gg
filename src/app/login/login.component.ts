@@ -1,3 +1,4 @@
+import { LoginService } from './../services/login.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -10,12 +11,13 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
-  submitted = false;
+  
 
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
     private route: ActivatedRoute,
+    private loginService: LoginService,
   ) {
 
   }
@@ -48,16 +50,14 @@ export class LoginComponent implements OnInit {
   }
 
   onLoginSubmit() {
-    this.submitted = true;
-
-    // stop here if form is invalid
-    if (this.loginForm.invalid) {
-      return;
-    }
-
+    let postData: any = {}
+    this.loginService.loginUser(postData).subscribe(result =>{
+      console.log('login form data here ....',result);
+    },
+    error =>{
+      console.log('login form error here ....',error);
+    })
   }
 
-  // convenience getter for easy access to form fields
-  get f() { return this.loginForm.controls; }
 
 }

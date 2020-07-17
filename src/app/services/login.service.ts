@@ -14,6 +14,12 @@ export class LoginService {
     private httpClient: HttpClient,
   ) { }
 
+  loginUser(postData:any){
+    let path: any;
+    path = environment.URL + "login"
+    return this.httpClient.post(path, postData)
+  }
+
   signupUser(postData:any){
     let path: any;
     //path = environment.URL + "signup_user"+ "?full_name="+postData.name;
