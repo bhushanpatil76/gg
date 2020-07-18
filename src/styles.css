@@ -3,7 +3,10 @@
 body {
     font-family: "Karla", sans-serif;
     background-color: #d0d0ce;
-    min-height: 100vh; }
+    min-height: 100vh;
+    font-size: 0.9rem;
+  
+  }
   
   .brand-wrapper {
     margin-bottom: 19px; }
@@ -82,3 +85,10 @@ body {
   
 
 /*e*/
+
+.spc-title{font-weight: bold;
+  color: #02027d;
+  border-bottom: 1px dotted #ccc;
+  margin-bottom: 13px;
+  font-size: 1.2rem;
+  padding: 0;}
